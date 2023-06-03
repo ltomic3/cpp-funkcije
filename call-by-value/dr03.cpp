@@ -1,20 +1,6 @@
 #include <iostream>
-#include <algorithm>
-#include <string>
 #include <vector>
 using namespace std;
-
-vector<int> ucitajBrojeve(int n)
-{
-    vector<int> brojevi;
-    for (int i = 0; i < n; i++)
-    {
-        int broj;
-        cin >> broj;
-        brojevi.push_back(broj);
-    }
-    return brojevi;
-}
 
 long long faktorijel(int broj)
 {
@@ -24,14 +10,18 @@ long long faktorijel(int broj)
     return f;
 }
 
-vector<long long> izracunajFaktorijele(vector<int> brojevi)
+void izracunajFaktorijele(int n)
 {
     vector<long long> faktorijeli;
+    for (int i = 0; i < n; i++)
+    {
+        int broj;
+        cin >> broj;
+        faktorijeli.push_back(faktorijel(broj));
+    }
 
-    for (int i = 0; i < brojevi.size(); i++)
-        faktorijeli.push_back(faktorijel(brojevi.at(i)));
-
-    return faktorijeli;
+    for (auto &broj : faktorijeli)
+        cout << broj << endl;
 }
 
 int main()
@@ -39,11 +29,7 @@ int main()
     int n;
     cin >> n;
 
-    auto brojevi = ucitajBrojeve(n);
-    auto faktorijeli = izracunajFaktorijele(brojevi);
-
-    for (int i = 0; i < faktorijeli.size(); i++)
-        cout << faktorijeli.at(i) << endl;
+    izracunajFaktorijele(n);
 
     return 0;
 }
